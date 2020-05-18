@@ -47,7 +47,13 @@ const initialState =
   ];
 
 export default function resourcesliceReducer(state = initialState, action) {
+  console.log("action?", action, "state?", state)
   switch (action.type) {
+    case "ADD_RESOURCE": {
+      return [
+        ...state, action.payload
+      ]
+    }
     default: {
       return state;
     }

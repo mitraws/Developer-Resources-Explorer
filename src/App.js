@@ -3,6 +3,8 @@ import "./App.css";
 import { useSelector } from "react-redux";
 import {selectDevelopersWithThisFavorite} from "./store/developers/selectors"
 import {selectResourcesWithThisFavorite, selectUserLoggedIn} from "./store/selectors"
+import ResourcesSection from "./components/ResourcesSection"
+import AddResourceForm from "./components/AddResourceForm"
 
 
 const selectDevelopers = (reduxState) => {
@@ -76,6 +78,8 @@ function App() {
           return <li key={res.id}>{res.name}</li>;
         })}
       </ul>
+      <ResourcesSection/>
+      <AddResourceForm/>
     </div>
   );
 }

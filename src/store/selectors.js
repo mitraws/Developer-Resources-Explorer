@@ -10,3 +10,4 @@ export const selectResourcesWithThisFavorite = developersInSelect => state => {
 export const selectUserLoggedIn = state => {
   return state.developers.find(dev => dev.id === state.user.id)
 }
+
