@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import "./App.css";
 import { useSelector } from "react-redux";
 import {selectDevelopersWithThisFavorite} from "./store/developers/selectors"
-import {selectResourcesWithThisFavorite} from "./store/selectors"
+import {selectResourcesWithThisFavorite, selectUserLoggedIn} from "./store/selectors"
+
 
 const selectDevelopers = (reduxState) => {
   return reduxState.developers;
@@ -18,7 +19,7 @@ function App() {
   const developers = useSelector(selectDevelopers);
   const developersWithThisFavorite = useSelector(selectDevelopersWithThisFavorite(favoriteResource))
   const resourcesWithThisFavorite = useSelector(selectResourcesWithThisFavorite(developersInSelect))
-  console.log("resources with this fav?", resourcesWithThisFavorite)
+  const loggedinUser = useSelector(selectUserLoggedIn)
   const resources = useSelector(selectResources);
   
 
@@ -26,6 +27,20 @@ function App() {
 
   return (
     <div>
+    <p
+      style={{
+        padding: "0.5rem",
+        background: "#eee"
+      }}
+    >
+      {loggedinUser ? (
+        <span>
+          Welcome back, <strong>{loggedinUser.name}</strong>!
+        </span>
+      ) : (
+        <span>...</span>
+      )}
+    </p>
       <h1> Web development resources</h1>
       <p>{developers.length} developers</p>      
       <p>{resources.length} developers</p>
